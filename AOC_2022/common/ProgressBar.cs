@@ -2,6 +2,10 @@ using System;
 using System.Text;
 using System.Threading;
 
+/// Copyright (standard MIT license):
+/// Daniel S Wolf
+/// https://gist.github.com/DanielSWolf/0ab6a96899cc5377bf54
+
 /// <summary>
 /// An ASCII progress bar
 /// </summary>
