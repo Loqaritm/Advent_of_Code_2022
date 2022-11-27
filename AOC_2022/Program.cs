@@ -1,8 +1,4 @@
-﻿using System;
-using System.Threading;
-
-namespace AOC_2022
-{
+﻿namespace AOC_2022;
 
 static class Program {
 
@@ -11,5 +7,4 @@ static class Program {
         day.Run();
 	}
 
-}
 }
