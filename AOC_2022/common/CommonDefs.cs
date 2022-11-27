@@ -1,3 +1,5 @@
+using System;
+
 namespace AOC_2022;
 
 public static class CommonDefs
