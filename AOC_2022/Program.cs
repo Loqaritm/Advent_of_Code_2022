@@ -3,7 +3,7 @@
 static class Program {
 
 	static void Main() {
-		var day = new ExampleDay1();
+		var day = new ExampleDay();
         day.Run();
 	}
 

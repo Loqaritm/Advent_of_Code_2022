@@ -6,4 +6,5 @@ public static class CommonDefs
 {
     // Should be AOC_2022 project dir
     public static string AOC_2022_main_dir => $"{AppDomain.CurrentDomain.BaseDirectory}/../../../";
+    public static string ResourcePath => $"{AppDomain.CurrentDomain.BaseDirectory}/Resources/";
 }

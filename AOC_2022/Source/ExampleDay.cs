@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace AOC_2022
 {
-    public class ExampleDay1 : IDay<List<int>, int>
+    public class ExampleDay : IDay<List<int>, int>
     {
         public List<int> ParseData(string data)
         {
@@ -17,7 +17,7 @@ namespace AOC_2022
             var returnValue = 0;
             using (var progress = new ProgressBar())
             {
-                var data = System.IO.File.ReadAllText($"{CommonDefs.AOC_2022_main_dir}/Example_day1/data.txt");
+                var data = System.IO.File.ReadAllText($"{CommonDefs.ResourcePath}/ExampleDay.txt");
                 var parsedData = ParseData(data);
                 // returnValue = RunPart1(parsedData, progress);
                 returnValue = RunPart2(parsedData, progress);
