@@ -8,7 +8,8 @@ namespace AOC_2022 {
     /// part 2 solutions are.
     public interface IDayPart<DataType, ReturnType>
     {
-        public string Name {get;}
+        // Default to just class name of whoever is implementing this interface
+        public string Name => this.GetType().Name;
         public string DataFileName {get;}
         public DataType ParseData(string data);
         public ReturnType RunInternal(DataType data, ProgressBar? progress = null);
