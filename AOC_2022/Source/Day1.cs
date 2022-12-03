@@ -1,7 +1,7 @@
 namespace AOC_2022;
 
 public struct CaloricElf {
-    public readonly List<int> _mCalories;
+    private readonly List<int> _mCalories;
     public CaloricElf(List<int> calories) {
         this._mCalories = calories;
     }
