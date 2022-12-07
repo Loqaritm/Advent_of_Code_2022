@@ -18,7 +18,9 @@ static class Program {
         // IDayPart<Day5.DataFormat, string> task = new Day5.Day5_1();
         // IDayPart<Day5.DataFormat, string> task = new Day5.Day5_2();
         // IDayPart<string, int> task = new Day6.Day6_1();
-        IDayPart<string, int> task = new Day6.Day6_2();
+        // IDayPart<string, int> task = new Day6.Day6_2();
+        // IDayPart<Day7.TreeNode, int> task = new Day7.Day7_1();
+        IDayPart<Day7.TreeNode, int> task = new Day7.Day7_2();
 
         task.Run();
 	}
