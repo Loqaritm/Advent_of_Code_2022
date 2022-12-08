@@ -24,5 +24,8 @@ public class Test_Day8 {
 
     [TestMethod]
     public void TestPart2() {
+        var sut = new AOC_2022.Day8.Day8_2();
+        var data = sut.ParseData(testData);
+        Assert.AreEqual(8, sut.RunInternal(data));
     }
 }
