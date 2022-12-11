@@ -26,7 +26,8 @@ static class Program {
         // IDayPart<List<Day9.Move>, int> task = new Day9.Day9_1();
         // IDayPart<List<Day9.Move>, int> task = new Day9.Day9_2();
         // IDayPart<List<Day10.Instruction>, int> task = new Day10.Day10_1();
-        IDayPart<List<Day10.Instruction>, string> task = new Day10.Day10_2();
+        // IDayPart<List<Day10.Instruction>, string> task = new Day10.Day10_2();
+        IDayPart<List<Day11.Monkey>, int> task = new Day11.Day11_1();
 
         task.Run();
 	}
