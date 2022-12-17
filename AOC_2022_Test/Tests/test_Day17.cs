@@ -19,11 +19,13 @@ public class Test_Day17 {
 
     [TestMethod]
     public void TestPart2() {
-        var sut = new AOC_2022.Day17.Day17_2();
+        var sut = new AOC_2022.Day17.Day17_2(2022);
         var data = sut.ParseData(testData);
-        Console.WriteLine($"Running...");
-        using (var progress = new ProgressBar()) {
-            Assert.AreEqual(1000000000000, sut.RunInternal(data, progress));
-        }
+        Assert.AreEqual(3068, sut.RunInternal(data));
+
+        sut = new AOC_2022.Day17.Day17_2(1000000000000);
+        data = sut.ParseData(testData);
+        // Assert.AreEqual(3068, sut.RunInternal(data));
+        Assert.AreEqual(1514285714288, sut.RunInternal(data));
     }
 }

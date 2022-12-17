@@ -1,9 +1,9 @@
 namespace AOC_2022.Day17;
 
 public class Pair {
-    public int X;
+    public long X;
     public int Y;
-    public Pair(int x, int y) {
+    public Pair(long x, int y) {
         X = x;
         Y = y;
     }
@@ -114,7 +114,7 @@ public class Day17_1 : IDayPart<MoveProvider, int>
                 if (movedRock.RockShape.Any(o => board[o.X,o.Y] == true)) {
                     // End of this.
                     currentRock.RockShape.ForEach(o => board[o.X, o.Y] = true);
-                    currentLastLine = Math.Max(currentLastLine, currentRock.RockShape.Max(o => o.X));
+                    currentLastLine = Math.Max(currentLastLine, currentRock.RockShape.Max(o => (int)o.X));
                     break;
                 }
                 currentRock = movedRock;
@@ -126,16 +126,66 @@ public class Day17_1 : IDayPart<MoveProvider, int>
     }
 }
 
-public class Day17_2 : Day17_1, IDayPart<MoveProvider, long>
+
+
+
+// The whole gist of part 2 is to find a cycle otherwise it would take WAY TO LONG
+// I'm finding a cycle by checking the last n rows (found experimentally),
+// computing a hash of sorts and checking if this key was ever found before.
+// Some inputs require only 8, some 16, but 20 as n worked for me.
+public class CycleDetector {
+    private Dictionary<Int128, long> _mLastSeenHeight = new Dictionary<Int128, long>();
+    private Dictionary<Int128, long> _mLastRoundSeen = new Dictionary<Int128, long>();
+
+    public long CycleRoundLen = 0;
+    public long CycleHeight = 0;
+    public int CycleLenToCheck = 20;
+
+    public bool AddDataAndCheckCycle(bool[,] wholeBoard, long currentHeight, long currentRound) {
+        if (currentHeight < CycleLenToCheck) {
+            // Not enough data
+            return false;
+        }
+
+        Int128 key = 0;
+        for (long i = currentHeight - CycleLenToCheck; i< currentHeight; ++i) {
+            for (int j = 0; j < wholeBoard.GetLength(1); ++j) {
+                key = (key << 1) | (wholeBoard[i,j] ? 0x01 : 0x00);
+            }
+        }
+
+        if (_mLastRoundSeen.ContainsKey(key)) {
+            CycleHeight = currentHeight - _mLastSeenHeight[key];
+            CycleRoundLen = currentRound - _mLastRoundSeen[key];
+            return true;
+        } else {
+            _mLastRoundSeen.Add(key, currentRound);
+            _mLastSeenHeight.Add(key, currentHeight);
+            return false;
+        }
+    }
+}
+
+public class Day17_2 : IDayPart<MoveProvider, long>
 {
-    public new long RunInternal(MoveProvider data, ProgressBar? progress)
+    private long _mNumberOfRounds;
+    public Day17_2(long numberOfRounds) {
+        _mNumberOfRounds = numberOfRounds;
+    }
+
+    public string DataFileName => "Day17.txt";
+
+    public MoveProvider ParseData(string data)
+    {
+        return new MoveProvider(data);
+    }
+
+    public long RunInternal(MoveProvider data, ProgressBar? progress = null)
     {
         var rockProvider = new RockProvider();
 
-        long heightOfBlocks = 0;
-        int currentLastLine = 0;
-
-        long HOW_LONG_TO_RUN = 1000000000000;
+        long currentLastLine = 0;
+        long result = 0;
 
         // Lets go easy way here - assume board is 100000 high
         var board = new bool[100000,7];
@@ -144,13 +194,22 @@ public class Day17_2 : Day17_1, IDayPart<MoveProvider, long>
             board[0,i] = true;
         }
 
-        for (long i=0; i<HOW_LONG_TO_RUN; ++i) {
+        var cycleDetector = new CycleDetector();
+        var wasCycleDetected = false;
 
-            progress?.Report((double)i / HOW_LONG_TO_RUN);
-
+        for (long i=0; i<_mNumberOfRounds; ++i) {
             var currentRock = rockProvider.GetNext();
             // Move by 3 up and 2 right
-            currentRock = currentRock.MovedBy(new Pair(currentLastLine + 4,2));
+            currentRock = currentRock.MovedBy(new Pair(currentLastLine + 2,2));
+
+            // We can do 2 moves right away
+            for (int j=0; j<2; ++j) {
+                var movedRock = currentRock.MovedBy(data.GetNextMove());
+                if (!movedRock.RockShape.Any(o => o.Y < 0 || o.Y > 6 || board[o.X, o.Y] == true)) {
+                    // Can move
+                    currentRock = movedRock;
+                }
+            }
 
             while (true) {
                 // Move left / right
@@ -164,30 +223,30 @@ public class Day17_2 : Day17_1, IDayPart<MoveProvider, long>
                 movedRock = currentRock.MovedBy(new Pair(-1, 0));
                 if (movedRock.RockShape.Any(o => board[o.X,o.Y] == true)) {
                     // End of this.
-                    currentRock.RockShape.ForEach(o => board[o.X, o.Y] = true);
-                    currentLastLine = Math.Max(currentLastLine, currentRock.RockShape.Max(o => o.X));
-
-                    if (currentLastLine >= 5000) {
-                        // Need to cut down to have enough memory
-                        // We're moving the board by 4000 down
-                        var helperArray = new bool[100000,7];
-                        Array.Copy(board, 4000, helperArray, 0, 2000);
-                        board = helperArray;
-                        currentLastLine -= 4000;
-                        heightOfBlocks += 4000;
-                    }
-
                     break;
                 }
                 currentRock = movedRock;
             }
 
+            currentRock.RockShape.ForEach(o => board[o.X, o.Y] = true);
+
+            var temp = currentRock.RockShape.Max(o => o.X);
+            if (currentLastLine < temp) {
+                result += temp - currentLastLine;
+                currentLastLine = temp;
+
+                if (wasCycleDetected) {
+                    continue;
+                }
+                if (cycleDetector.AddDataAndCheckCycle(board, currentLastLine, i))  {
+                    // Yay, cycle detected!
+                    var numberOfCyclesThatFitTillEnd = (_mNumberOfRounds - i) / cycleDetector.CycleRoundLen;
+                    result += numberOfCyclesThatFitTillEnd * cycleDetector.CycleHeight;
+                    i += numberOfCyclesThatFitTillEnd * cycleDetector.CycleRoundLen;
+                }
+            }
         }
 
-        return currentLastLine + heightOfBlocks;
+        return result;
     }
 }
-
-// expected for test =  1514285714288
-// intMax =             2147483647
-// int64 max =          9223372036854775807
