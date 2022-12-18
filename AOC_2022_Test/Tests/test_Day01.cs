@@ -1,7 +1,7 @@
 namespace AOC_2022_Test;
 
 [TestClass]
-public class test_Day1 {
+public class Test_Day01 {
     private readonly string testData = @"1000
 2000
 3000

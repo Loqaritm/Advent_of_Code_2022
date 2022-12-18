@@ -1,7 +1,7 @@
 namespace AOC_2022_Test;
 
 [TestClass]
-public class Test_Day9 {
+public class Test_Day09 {
     private readonly string testData = @"R 4
 U 4
 L 3

@@ -1,7 +1,7 @@
 namespace AOC_2022_Test;
 
 [TestClass]
-public class Test_Day7 {
+public class Test_Day07 {
     private readonly string testData = @"$ cd /
 $ ls
 dir a
