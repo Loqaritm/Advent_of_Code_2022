@@ -145,3 +145,41 @@ public class Day13_1 : IDayPart<List<Packet>, int>
         });
     }
 }
+
+
+public class Day13_2 : IDayPart<List<Tree>, int>
+{
+    public string DataFileName => "Day13.txt";
+
+    public List<Tree> ParseData(string data)
+    {
+        return data.Split(Environment.NewLine + Environment.NewLine).SelectMany(packetData => {
+            var lines = packetData.Split(Environment.NewLine).ToList();
+            return new List<Tree>{new Tree(lines[0]), new Tree(lines[1])};
+
+        }).ToList();
+    }
+
+    public int RunInternal(List<Tree> data, ProgressBar? progress = null)
+    {
+        // Parse the additional driver packets to trees
+        var driverData = @"[[2]]
+[[6]]";
+        var driverTrees = this.ParseData(driverData);
+
+        data = data.Concat(driverTrees).ToList();
+
+        data.Sort(delegate(Tree first, Tree second) {
+            var comparisonResult = first.IsLesserThanOtherTree(second);
+            return comparisonResult switch {
+                Tree.State.Lesser => -1,
+                Tree.State.Greater => 1,
+                Tree.State.Equal => 0,
+                _ => throw new NotSupportedException()
+            };
+        });
+
+
+        return (data.IndexOf(driverTrees[0]) + 1) * (data.IndexOf(driverTrees[1]) + 1);
+    }
+}

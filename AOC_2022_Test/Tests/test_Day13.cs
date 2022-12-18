@@ -42,5 +42,8 @@ public class Test_Day13 {
 
     [TestMethod]
     public void TestPart2() {
+        var sut = new AOC_2022.Day13.Day13_2();
+        var data = sut.ParseData(testData);
+        Assert.AreEqual(140, sut.RunInternal(data));
     }
 }
