@@ -30,9 +30,11 @@ static class Program {
         // IDayPart<List<Day11.Monkey>, int> task = new Day11.Day11_1();
         // IDayPart<List<Day11.Monkey>, long> task = new Day11.Day11_2();
         // IDayPart<char[,], int> task = new Day14.Day14_1();
-        IDayPart<char[,], int> task = new Day14.Day14_2();
+        // IDayPart<char[,], int> task = new Day14.Day14_2();
         // IDayPart<Day17.MoveProvider, int> task = new Day17.Day17_1();
         // IDayPart<Day17.MoveProvider, long> task = new Day17.Day17_2(1000000000000);
+        // IDayPart<List<Day18.Cube1x1x1>, int> task = new Day18.Day18_1();
+        IDayPart<List<Day18.Cube1x1x1>, int> task = new Day18.Day18_2(); // 2528 too low
 
         task.Run();
 	}
