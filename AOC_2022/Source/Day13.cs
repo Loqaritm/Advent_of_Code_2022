@@ -64,7 +64,7 @@ public class Tree {
         Failed
     }
 
-    public State IsLesserThanOtherTree(Tree other) {
+    public State Compare(Tree other) {
         if (this.Value is not null && other.Value is not null) {
             if (this.Value < other.Value) {
                 return State.Lesser;
@@ -81,7 +81,7 @@ public class Tree {
                     // Right list ran out of items
                     return State.Greater;
                 }
-                var result = Children[i].IsLesserThanOtherTree(other.Children[i]);
+                var result = Children[i].Compare(other.Children[i]);
                 // Still not sure, need to continue
                 if (result == State.Equal) { continue; }
                 return result;
@@ -95,13 +95,13 @@ public class Tree {
         if (this.Value is null && other.Value is not null) {
             var convertedToChild = new Tree();
             convertedToChild.Children.Add(new Tree(other.Value));
-            return this.IsLesserThanOtherTree(convertedToChild);
+            return this.Compare(convertedToChild);
         }
         if (this.Value is not null && other.Value is null) {
             var convertedToChild = new Tree();
             this.Children.Add(new Tree(this.Value));
             this.Value = null;
-            return this.IsLesserThanOtherTree(other);
+            return this.Compare(other);
         }
 
 
@@ -140,7 +140,7 @@ public class Day13_1 : IDayPart<List<Packet>, int>
     public int RunInternal(List<Packet> data, ProgressBar? progress = null)
     {
         return data.Sum(packet => {
-            var result = packet.FirstTree.IsLesserThanOtherTree(packet.SecondTree);
+            var result = packet.FirstTree.Compare(packet.SecondTree);
             return (result == Tree.State.Lesser) ? packet.PacketNum : 0;
         });
     }
@@ -170,7 +170,7 @@ public class Day13_2 : IDayPart<List<Tree>, int>
         data = data.Concat(driverTrees).ToList();
 
         data.Sort(delegate(Tree first, Tree second) {
-            var comparisonResult = first.IsLesserThanOtherTree(second);
+            var comparisonResult = first.Compare(second);
             return comparisonResult switch {
                 Tree.State.Lesser => -1,
                 Tree.State.Greater => 1,
