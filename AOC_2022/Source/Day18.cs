@@ -102,6 +102,8 @@ public class Day18_2 : IDayPart<List<Cube1x1x1>, int>
         List<Cube1x1x1> visitedOutsideCubes = new List<Cube1x1x1>();
 
         while (queue.Count > 0) {
+            progress?.Report((double)1 / queue.Count);
+            
             var element = queue.Dequeue();
 
             if (visitedOutsideCubes.Contains(element)) {
