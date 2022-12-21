@@ -20,14 +20,14 @@ hmdt: 32";
 
     [TestMethod]
     public void TestParseData() {
-        var sut = new AOC_2022.Day21.Day21_1();
+        var sut = new AOC_2022.Day21.Part1.Day21_1();
         var data = sut.ParseData(testData);
         Assert.AreEqual(15, data.Count());
     }
 
     [TestMethod]
     public void TestPart1() {
-        var sut = new AOC_2022.Day21.Day21_1();
+        var sut = new AOC_2022.Day21.Part1.Day21_1();
         var data = sut.ParseData(testData);
         Assert.AreEqual(152, sut.RunInternal(data));
     }
