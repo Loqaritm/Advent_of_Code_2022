@@ -113,7 +113,7 @@ public class Day20_2 : IDayPart<List<NumberPosition2>, long>
                 // When we move by data.Count - 1 steps left or right,
                 // we actually end up at the exact same relative configuration
                 // This simple operation, allows us to handle very large numbers
-                var amountToMoveRemaining = item.Value % (data.Count - 1);
+                var amountToMoveRemaining = Math.Abs(item.Value) % (data.Count - 1);
                 
                 if (isMovingRight) {
                     while (amountToMoveRemaining >= data.Count - position) {

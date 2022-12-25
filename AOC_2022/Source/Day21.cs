@@ -10,12 +10,13 @@ public class OperationMonkey : Monkey
         _mMonkeyName = name;
         _mOperationType = operationType;
         _mMonkeyNamesToWaitFor = monkeyNamesToWaitFor;
+        _mMonkeysToWaitFor = new List<Monkey>();
     }
 
     public void SetupMonkey(List<Monkey> allMonkeyList) {
         _mMonkeysToWaitFor = new List<Monkey>();
         _mMonkeyNamesToWaitFor.ForEach(monkeyName => {
-            _mMonkeysToWaitFor.Add(allMonkeyList.Find(o=> o.Name == monkeyName));
+            _mMonkeysToWaitFor.Add(allMonkeyList.Find(o=> o.Name == monkeyName)!);
         });
     }
 
@@ -99,7 +100,7 @@ public class Day21_1 : IDayPart<List<Monkey>, long>
             }
         }
 
-        return data.Find(o=>o.Name == "root").Value;
+        return data.Find(o=>o.Name == "root")!.Value;
     }
 }
 }
@@ -125,12 +126,13 @@ public class OperationMonkey : Monkey
         _mMonkeyName = name;
         _mOperationType = operationType;
         _mMonkeyNamesToWaitFor = monkeyNamesToWaitFor;
+        _mMonkeysToWaitFor = new List<Monkey>();
     }
 
     public void SetupMonkey(List<Monkey> allMonkeyList) {
         _mMonkeysToWaitFor = new List<Monkey>();
         _mMonkeyNamesToWaitFor.ForEach(monkeyName => {
-            _mMonkeysToWaitFor.Add(allMonkeyList.Find(o=> o.Name == monkeyName));
+            _mMonkeysToWaitFor.Add(allMonkeyList.Find(o=> o.Name == monkeyName)!);
         });
     }
 
@@ -152,14 +154,13 @@ public class OperationMonkey : Monkey
     public override long? Value {
         get {
             if (_mCachedValue is not null) { return _mCachedValue.Value; }
-            _mCachedValue = _mOperationType switch {
+            return _mCachedValue = _mOperationType switch {
                 OperationType.Add => _mMonkeysToWaitFor[0].Value + _mMonkeysToWaitFor[1].Value,
                 OperationType.Subtract => _mMonkeysToWaitFor[0].Value - _mMonkeysToWaitFor[1].Value,
                 OperationType.Multiply => _mMonkeysToWaitFor[0].Value * _mMonkeysToWaitFor[1].Value,
                 OperationType.Divide => _mMonkeysToWaitFor[0].Value / _mMonkeysToWaitFor[1].Value,
                 _ => throw new NotSupportedException()
             };
-            return _mCachedValue.Value;
         }
     }
 
@@ -243,7 +244,7 @@ public class Day21_2 : IDayPart<List<Monkey>, string>
         // Doing this the easiest way possible - using a proper tool for the job.
         // Online solver used to find x from the operation string representation:
         // https://quickmath.com/#form?v2=solve
-        return data.Find(o => o.Name == "root").GetStringRepresentation();
+        return data.Find(o => o.Name == "root")!.GetStringRepresentation();
     }
 }
 
