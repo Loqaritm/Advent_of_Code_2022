@@ -1,10 +1,17 @@
 using System.Net;
+using System.Text.RegularExpressions;
 
 namespace AOC_2022;
 
 // Description:
 // Handles reading the input and downloading it if necessary.
 public class InputHelper {
+    private static readonly Regex regex = new Regex(@"\d+");
+    public static int ExtractFirstNumber(string text)
+    {
+        return int.Parse(regex.Match(text)?.Value ?? throw new ArgumentException(nameof(text)));
+    }
+
     public static InputHelper ForYear(string year) {
         return new InputHelper(year);
     }

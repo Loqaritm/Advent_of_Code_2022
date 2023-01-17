@@ -10,7 +10,7 @@ namespace AOC_2022 {
     {
         // Default to just class name of whoever is implementing this interface
         public string Name => this.GetType().Name;
-        public int DayNumber {get;}
+        public int DayNumber => InputHelper.ExtractFirstNumber(Name);
         public DataType ParseData(string data);
         public ReturnType RunInternal(DataType data, ProgressBar? progress = null);
 
