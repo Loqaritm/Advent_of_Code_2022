@@ -46,7 +46,7 @@ public class DataFormat {
 
 public class Day5_1 : IDayPart<DataFormat, string>
 {
-    public string DataFileName => "Day5.txt";
+    public int DayNumber => 5;
 
     public DataFormat ParseData(string data)
     {

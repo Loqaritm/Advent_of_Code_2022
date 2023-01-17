@@ -11,7 +11,7 @@ public class Instruction {
 
 public class Day10_1 : IDayPart<List<Instruction>, int>
 {
-    public string DataFileName => "Day10.txt";
+    public int DayNumber => 10;
 
     public List<Instruction> ParseData(string data)
     {

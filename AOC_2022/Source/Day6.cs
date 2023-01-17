@@ -2,7 +2,7 @@ namespace AOC_2022.Day6;
 
 public class Day6_1 : IDayPart<string, int>
 {
-    public string DataFileName => "Day6.txt";
+    public int DayNumber => 6;
 
     public string ParseData(string data)
     {
@@ -24,7 +24,7 @@ public class Day6_1 : IDayPart<string, int>
 
 public class Day6_2 : IDayPart<string, int>
 {
-    public string DataFileName => "Day6.txt";
+    public int DayNumber => 6;
 
     public string ParseData(string data)
     {

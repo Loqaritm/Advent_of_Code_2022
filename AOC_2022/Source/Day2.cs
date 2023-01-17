@@ -43,7 +43,7 @@ public struct PlayData {
 
 public class Day2_1 : IDayPart<DataFormat, int>
 {
-    public string DataFileName => "Day2.txt";
+    public int DayNumber => 2;
 
     public DataFormat ParseData(string data)
     {
@@ -114,7 +114,7 @@ public struct PlayData2 {
 
 public class Day2_2 : IDayPart<DataFormat2, int>
 {
-    public string DataFileName => "Day2.txt";
+    public int DayNumber => 2;
 
     public DataFormat2 ParseData(string data)
     {

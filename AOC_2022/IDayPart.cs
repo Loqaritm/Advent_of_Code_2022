@@ -10,7 +10,7 @@ namespace AOC_2022 {
     {
         // Default to just class name of whoever is implementing this interface
         public string Name => this.GetType().Name;
-        public string DataFileName {get;}
+        public int DayNumber {get;}
         public DataType ParseData(string data);
         public ReturnType RunInternal(DataType data, ProgressBar? progress = null);
 
@@ -24,7 +24,11 @@ namespace AOC_2022 {
             ReturnType returnValue;
             using (var progress = new ProgressBar())
             {
-                var data = System.IO.File.ReadAllText($"{CommonDefs.ResourcePath}/{DataFileName}");
+                // Do this synchronously without await
+                var task = Task.Run(() => InputHelper.ForYear("2022").GetInput(DayNumber));
+                task.Wait();
+
+                var data = task.Result;
                 var parsedData = ParseData(data);
                 returnValue = RunInternal(parsedData, progress);
             }

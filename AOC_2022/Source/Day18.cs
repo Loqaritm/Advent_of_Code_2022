@@ -47,7 +47,7 @@ public class Cube1x1x1 {
 
 public class Day18_1 : IDayPart<List<Cube1x1x1>, int>
 {
-    public string DataFileName => "Day18.txt";
+    public int DayNumber => 18;
 
     public List<Cube1x1x1> ParseData(string data)
     {
@@ -70,7 +70,7 @@ public class Day18_1 : IDayPart<List<Cube1x1x1>, int>
 
 public class Day18_2 : IDayPart<List<Cube1x1x1>, int>
 {
-    public string DataFileName => "Day18.txt";
+    public int DayNumber => 18;
 
     public List<Cube1x1x1> ParseData(string data)
     {

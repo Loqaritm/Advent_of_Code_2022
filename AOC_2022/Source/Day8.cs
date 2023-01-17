@@ -90,7 +90,7 @@ public class Forest {
 
 public class Day8_1 : IDayPart<Forest, int>
 {
-    public string DataFileName => "Day8.txt";
+    public int DayNumber => 8;
 
     public Forest ParseData(string data)
     {

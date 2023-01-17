@@ -30,7 +30,7 @@ public class ElfPair {
 
 public class Day4_1 : IDayPart<List<ElfPair>, int>
 {
-    public string DataFileName => "Day4.txt";
+    public int DayNumber => 4;
 
     public List<ElfPair> ParseData(string data)
     {
@@ -52,7 +52,7 @@ public class Day4_1 : IDayPart<List<ElfPair>, int>
 
 public class Day4_2 : IDayPart<List<ElfPair>, int>
 {
-    public string DataFileName => "Day4.txt";
+    public int DayNumber => 4;
 
     public List<ElfPair> ParseData(string data)
     {

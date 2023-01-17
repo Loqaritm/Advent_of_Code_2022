@@ -31,7 +31,7 @@ public struct Position : IEquatable<Position>{
 
 public class Day9_1 : IDayPart<List<Move>, int>
 {
-    public string DataFileName => "Day9.txt";
+    public int DayNumber => 9;
 
     public List<Move> ParseData(string data)
     {

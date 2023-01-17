@@ -79,7 +79,7 @@ public class Monkey {
 
 public class Day11_1 : IDayPart<List<Monkey>, int>
 {
-    public string DataFileName => "Day11.txt";
+    public int DayNumber => 11;
 
     public List<Monkey> ParseData(string data)
     {

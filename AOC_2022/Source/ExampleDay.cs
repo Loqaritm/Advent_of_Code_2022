@@ -6,7 +6,7 @@ namespace AOC_2022;
 
 public class ExampleDay_1 : IDayPart<List<int>, int>
 {
-    public string DataFileName => "ExampleDay.txt";
+    public int DayNumber => 0;
 
     public List<int> ParseData(string data)
     {
@@ -30,7 +30,7 @@ public class ExampleDay_2 : IDayPart<List<int>, int>
 {
     public string Name => nameof(ExampleDay_2);
 
-    public string DataFileName => "ExampleDay.txt";
+    public int DayNumber => 0;
 
     public List<int> ParseData(string data)
     {

@@ -63,7 +63,7 @@ public class TreeNode {
 
 public class Day7_1 : IDayPart<TreeNode, int>
 {
-    public string DataFileName => "Day7.txt";
+    public int DayNumber => 7;
 
     public TreeNode ParseData(string data)
     {

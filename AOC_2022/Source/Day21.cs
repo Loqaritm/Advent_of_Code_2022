@@ -68,7 +68,7 @@ public class ValueMonkey : Monkey
 
 public class Day21_1 : IDayPart<List<Monkey>, long>
 {
-    public string DataFileName => "Day21.txt";
+    public int DayNumber => 21;
 
     public List<Monkey> ParseData(string data)
     {
@@ -202,7 +202,7 @@ public class ValueMonkey : Monkey
 
 public class Day21_2 : IDayPart<List<Monkey>, string>
 {
-    public string DataFileName => "Day21.txt";
+    public int DayNumber => 21;
 
     public List<Monkey> ParseData(string data)
     {

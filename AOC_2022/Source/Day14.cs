@@ -13,7 +13,7 @@ public class Position {
 
 public class Day14_1 : IDayPart<char[,], int>
 {
-    public string DataFileName => "Day14.txt";
+    public int DayNumber => 14;
 
     public char[,] ParseData(string data)
     {
@@ -118,7 +118,7 @@ public class Day14_2 : IDayPart<char[,], int>
 {
     private int X_OFFSET = 2000;
 
-    public string DataFileName => "Day14.txt";
+    public int DayNumber => 14;
 
     public char[,] ParseData(string data)
     {

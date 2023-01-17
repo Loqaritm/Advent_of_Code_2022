@@ -10,7 +10,7 @@ public struct CaloricElf {
 
 public class Day1_1 : IDayPart<List<CaloricElf>, int>
 {
-    public string DataFileName => "Day1.txt";
+    public int DayNumber => 1;
 
     public List<CaloricElf> ParseData(string data)
     {
@@ -32,7 +32,7 @@ public class Day1_1 : IDayPart<List<CaloricElf>, int>
 
 public class Day1_2 : IDayPart<List<CaloricElf>, int>
 {
-    public string DataFileName => "Day1.txt";
+    public int DayNumber => 1;
 
     public List<CaloricElf> ParseData(string data)
     {

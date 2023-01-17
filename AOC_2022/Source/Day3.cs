@@ -16,7 +16,7 @@ public class Rucksack {
 
 public class Day3_1 : IDayPart<List<Rucksack>, int>
 {
-    public string DataFileName => "Day3.txt";
+    public int DayNumber => 3;
 
     public List<Rucksack> ParseData(string data)
     {
@@ -45,7 +45,7 @@ public class Day3_1 : IDayPart<List<Rucksack>, int>
 
 public class Day3_2 : IDayPart<List<Rucksack>, int>
 {
-    public string DataFileName => "Day3.txt";
+    public int DayNumber => 3;
 
     public List<Rucksack> ParseData(string data)
     {

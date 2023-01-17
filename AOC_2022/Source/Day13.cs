@@ -125,7 +125,7 @@ public class Packet {
 
 public class Day13_1 : IDayPart<List<Packet>, int>
 {
-    public string DataFileName => "Day13.txt";
+    public int DayNumber => 13;
 
     public List<Packet> ParseData(string data)
     {
@@ -149,7 +149,7 @@ public class Day13_1 : IDayPart<List<Packet>, int>
 
 public class Day13_2 : IDayPart<List<Tree>, int>
 {
-    public string DataFileName => "Day13.txt";
+    public int DayNumber => 13;
 
     public List<Tree> ParseData(string data)
     {

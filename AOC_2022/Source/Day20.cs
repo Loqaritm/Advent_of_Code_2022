@@ -13,7 +13,7 @@ public class NumberPosition {
 
 public class Day20_1 : IDayPart<List<NumberPosition>, int>
 {
-    public string DataFileName => "Day20.txt";
+    public int DayNumber => 20;
 
     public List<NumberPosition> ParseData(string data)
     {
@@ -89,7 +89,7 @@ public class NumberPosition2 {
 
 public class Day20_2 : IDayPart<List<NumberPosition2>, long>
 {
-    public string DataFileName => "Day20.txt";
+    public int DayNumber => 20;
 
     private readonly long DECRYPTION_KEY = 811589153;
 

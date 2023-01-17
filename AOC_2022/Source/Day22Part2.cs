@@ -178,7 +178,7 @@ public class MonkeyMap {
 
 public class Day22_2 : IDayPart<MonkeyMap, int>
 {
-    public string DataFileName => "Day22.txt";
+    public int DayNumber => 22;
 
     public MonkeyMap ParseData(string data)
     {  

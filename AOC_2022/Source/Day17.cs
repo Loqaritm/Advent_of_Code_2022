@@ -67,7 +67,7 @@ public class MoveProvider {
 
 public class Day17_1 : IDayPart<MoveProvider, int>
 {
-    public string DataFileName => "Day17.txt";
+    public int DayNumber => 17;
 
     public MoveProvider ParseData(string data)
     {
@@ -173,7 +173,7 @@ public class Day17_2 : IDayPart<MoveProvider, long>
         _mNumberOfRounds = numberOfRounds;
     }
 
-    public string DataFileName => "Day17.txt";
+    public int DayNumber => 17;
 
     public MoveProvider ParseData(string data)
     {
